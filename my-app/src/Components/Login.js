@@ -32,7 +32,7 @@ const LoginPage = ({setLoginUser}) => {
   
     const login = () => {
   
-      axios.post("http://localhost:9000/login", user)
+      axios.post("https://healthvaultfinal2.onrender.com/login", user)
         .then(res =>{
           alert(res.data.message)
         //   setLoginUser(res.data.user)

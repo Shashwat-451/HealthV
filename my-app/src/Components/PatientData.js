@@ -5,7 +5,7 @@ const MedicalFormData = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9000/getAllUser",{
+    fetch("https://healthvaultfinal2.onrender.com/getAllUser",{
       method: 'GET',
     }) 
     .then((res) => res.json())

@@ -35,7 +35,7 @@ const MedicalForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9000/patientData', formData);
+      const response = await axios.post('https://healthvaultfinal2.onrender.com/patientData', formData);
       console.log(response.data);
       alert('Patient information saved successfully!');
     } catch (error) {

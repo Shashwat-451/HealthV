@@ -45,7 +45,7 @@ const Register = () => {
         if(name && email && password && (password===reEnterPassword))
         {
           // alert("posted")
-          axios.post("http://localhost:9000/register",user)
+          axios.post("https://healthvaultfinal2.onrender.com/register",user)
           .then(res =>{
             alert(res.data.message)
          
