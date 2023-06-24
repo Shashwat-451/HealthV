@@ -10,7 +10,7 @@ const QrCodeGenerator = () => {
   };
 
   const generateQRCode = () => {
-    const url = `https://example.com?email=${email}`; // Modify the URL as per your requirements
+    const url = `https://healthvault.netlify.app/?email=${email}`; // Modify the URL as per your requirements
     return <QRCode value={url} />;
   };
 
