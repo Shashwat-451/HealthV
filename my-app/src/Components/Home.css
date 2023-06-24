@@ -1,0 +1,213 @@
+#Loginform
+{   left:580px;
+    position: absolute;
+    padding-top: 100px;
+    /* height: 500px;
+    width: 600px; */
+    margin-top: 0px;
+}
+.bodyy{
+  background-color: black;
+  color: white;
+}
+
+.toppp{
+  align-content: center;
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+margin-top: 100px;
+
+}
+.toppp h1,p{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 40px;
+  color: black;
+}
+.toppp h1{
+  font-size: 100px;
+}
+#Regform
+{   position: absolute;
+    left: 2px;
+    padding-top: 20px;
+    margin-top: 80px;
+    /* height: 500px;
+    width: 600px; */
+/* margin:auto; */
+ 
+}
+.form-btn{
+    /* background: white; */
+    height: 6px;
+    z-index: 60;
+   border-radius: 30px ;
+    top: -25px;
+    left: 170px;
+    /* font-size: larger; */
+
+}
+.form-container span{  
+    font-size: 20px;
+    left: 140px;
+    /* border:2px solid black; */
+    border-radius: 20px 0px  0px 20px;
+    padding: 10px;
+    position: relative;
+
+}
+#span2{  
+    font-size: 20px;
+    left: 140px;
+    /* border:2px solid black; */
+    border-radius: 0px 20px  20px 0px;
+    padding: 10px;
+    padding-left: 13px;
+    padding-right: 13px;
+    position: relative;
+
+}
+/* #Indicator
+{
+    width: 90px;
+    border:none;
+    background:black;
+    font-weight: bolder;
+    height:3px;
+    margin-top:8px;
+    transform: translateX(800);
+    transition: transform 0.1s;
+} */
+
+.form
+{
+ max-width: 1800px;
+ padding: 0 0;
+ position: absolute;
+
+ 
+ transition: transform 1s;
+}
+
+
+/* .form-container span
+{   width: 30px;
+    font-size: larger;
+    
+    padding: 0, 10px;
+    color: black;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+} */
+
+.form-container
+{   margin-left: 900px;
+    /* background:grey; */
+   display: flex;
+    border-radius: 30px;
+    width: 500px;
+    height: 550px;
+    position: relative;
+    text-align: center;
+    padding: 30px 0;
+    margin: 0px;
+    /* box-shadow: 0 0 20px 0px rgba(0,0,0,0.1); */
+    overflow: hidden;
+
+}
+
+.logslide{
+    transform: translateX(-770px);
+}
+.regslide{
+  
+    transform: translateX(450px);
+}
+/* .indstyle{
+    transform: translateX(100px);
+} */
+
+.log2slide{
+    transform: translateX(20px);
+}
+.reg2slide{
+    transform: translateX(-190px);
+
+}
+.dy{
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+}
+.spanstyle{
+    background-color: orangered;
+    color: white;
+    /* border: 2px solid white; */
+    cursor: pointer;
+}
+
+.span2style{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.ft{
+  /* object-fit: cover; */
+  width:100vw;
+  margin: 0px;
+  padding: 0px;
+  left:0;
+
+}
+
+.btnn{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: white;
+  width: 150px;
+  font-size: 20px;
+  padding: 5px;
+  border: 5px solid white;
+  border-radius: 40px;
+  margin-top: 30px;
+}
+@media screen and (min-width: 480px) {
+    .imgcont img{
+        height: 65vw;
+    }
+    
+  }
+  @media screen and (min-width: 720px) {
+    .imgcont img{
+        height: 45vw;
+    }
+    
+  }
+  change_content:after {
+    content: "";
+    animation: changetext 10s infinite linear;
+    color: #00b894;
+  }
+@keyframes changetext{
+    0% {
+      content: "Hotels";
+    }
+    20% {
+      content: "Restaurants";
+    }
+    35% {
+      content: "Gym";
+    }
+    60% {
+      content: "Shopping Center";
+    }
+    80% {
+      content: "Swimming Pool";
+    }
+    100% {
+      content: "Outdoors";
+    }
+  }
+  
