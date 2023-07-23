@@ -1,5 +1,58 @@
-.medform{
-  display: flex;
-  flex-direction: column;
-  margin-left: -1140px;
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
+
+
+
+.parent{
+  box-sizing: border-box;
+  margin: 30px;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.items{
+  width:100%;
+  /* background-color: aqua; */
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* #item1{
+  width: 40%;
+}
+#item2{
+  width: 40%;
+} */
+
+form{
+  
+  display:flex;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputtt{
+  width:70%;
+  margin: 1px;
+}
+.textt{
+  width: 70%;
+  height: 100px;
+
+}
+
+.btnn:hover{
+
+  border: 2px solid black;
+  border-radius: 150px;
+}
+

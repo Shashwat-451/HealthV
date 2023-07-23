@@ -31,17 +31,22 @@ const LoginPage = ({setLoginUser}) => {
   
   
     const login = () => {
-  
       axios.post("https://healthvaultfinal2.onrender.com/login", user)
-        .then(res =>{
-          alert(res.data.message)
-        //   setLoginUser(res.data.user)
-          navigate("/patientData")
-        } )
-      //   .then(res=>console.log(res))
-  
-  
-    }
+        .then(res => {
+          if (res.status >= 200 && res.status < 300) {
+            alert(res.data.message);
+            // setLoginUser(res.data.user);
+            navigate("/patientData");
+          } else {
+            alert("Login failed. Please check your credentials and try again.");
+          }
+        })
+        .catch(error => {
+          alert("An error occurred while logging in. Please try again later.");
+          console.error(error);
+        });
+    };
+    
   
   
     return (
@@ -72,31 +77,38 @@ const LoginPage = ({setLoginUser}) => {
 
       </ul>
     </nav>
-       <div className='container'>
-        <div className='row'>
-          <div className='col-md-6'>
-          <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-4468581-3783954.png" alt="img" />
-          </div>
-          <div className='col-md-6 formm'>
+       <div className='parent bord' style={{marginTop:"120px"}}>
+        
+       
+         
           <div className='login'>
               {console.log(user)}
-              <h1 style={{marginBottom:"20px"}}className='text-center'>LOGIN</h1>
+              <h1 style={{marginBottom:"40px",marginTop:"30px",color:"white"}}className='text-center'>LOGIN</h1>
+              <div className='items'> 
               <input className='inputt' type="text" name="email" value={user.email} placeholder="Enter your Email" onChange={handleChange}></input>
-              <input className='inputt' type="password" name="password" value={user.password} placeholder="Enter your password" onChange={handleChange}></input>
-              <br/>
-              <div className='buttons '>
-              <button  onClick={login}>Login</button>
               </div>
-              <div className='buttons'>
+              <div className='items'> 
+              <input className='inputt' type="password" name="password" value={user.password} placeholder="Enter your password" onChange={handleChange}></input>
+              </div>
+              <div className='items'>
+              <div >
+              <button  className='buttons 'onClick={login}>Login</button>
+              </div>
+              </div>
+              <div className='items'>
+              <div style={{color:'white'}}>
               <h5>Don't have an Account?</h5>
               </div>
-              <div className='buttons '>
-              <button onClick={handleClicking}>Sign Up</button>
+              </div>
+              <div className='items'>
+              <div   style={{marginBottom:"10px"}} >
+              <button className='buttons ' onClick={handleClicking}>Sign Up</button>
+              </div>
               </div>
             </div>
-          </div>
+          
         </div>
-       </div>
+       
   
         {/* <div className="outer_divv2">
           <img src="https://wallpaperaccess.com/full/176600.jpg" alt="img" />

@@ -75,20 +75,11 @@ app.post("/login", setSharedVariable,(req, res) => {
             // res.cookie('email', user.email);
             res.send({ message: "Login successful", user: user });
             sharedVariable = req.body.email;
-            
-          //   app.get("/getAllUser",async (req, res) => {
-          //     try {
-          //       const  allUser=await Patient.findOne({email: email});
-          //       // const allUser = await Patient.findOne({ email: email });
-          //       res.send({status:"ok",data:allUser});
-             
-          //     } catch (error) {
-          //       console.log(error);
-          //     }
-          // })
+                  
 
           } else {
             res.send({ message: "Password did not match" });
+             
           }
         } else {
           res.send({ message: "User not registered" });

@@ -8,6 +8,8 @@ import QrCodeGenerator from './Components/QrCodeGenerator';
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import LoginPage from './Components/Login';
 import Register from './Components/Register';
+import Articles from './Components/Articles';
+import Appointments from './Appointments';
 function App() {
 
   return (
@@ -17,6 +19,8 @@ function App() {
 
         {/* */}
         <Route path="/" element={<Home/>}/>
+        <Route path="/appointment" element={<Appointments/>}/>
+        <Route path="/articles" element={<Articles/>}/>
         <Route path="/medform" element={<MedicalForm/>}/> 
         <Route path="/patientdata" element={<PatientData/>}/>
         <Route path="/qr" element={<QrCodeGenerator/>}/>

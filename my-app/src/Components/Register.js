@@ -89,31 +89,42 @@ const Register = () => {
     </nav>
 
 
-<div className='container'>
-<div className='row'>
-<div className='col-md-6'>
-          <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-4468581-3783954.png" alt="img" />
-          </div>
-          <div className='col-md-6 forme'>
+
+    <div className='parent bord' style={{marginTop:"90px"}}>
+
+        
           <div className='register '></div>
-        <h1 className='text-center'>REGISTER</h1>
+          <div className='items '>
+        <h1 className='text-center' style={{color:"white"}}>REGISTER</h1>
+        </div>
+        <div className='items '>
         <input className="inputt"type="text" name="name" value={user.name} placeholder="Your Name" onChange={handleChange}></input>
+       </div>
+        <div className='items '>
         <input className="inputt"type="text" name="email" value={user.email} placeholder="Your Email" onChange={handleChange}></input>
+        </div>
+        <div className='items '>
         <input className="inputt"type="password" name="password" value={user.password} placeholder="Your Password" onChange={handleChange}></input>
+        </div>
+        <div className='items '>
         <input className="inputt" type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
-        <br/>
-        <div className='buttons '>
-        <button onClick={register}>Register</button>
         </div>
-        <div className='buttons'>
-              <h5>Already have an Account?</h5>
+        <div className='items '>
+        <div >
+        <button className='buttons ' onClick={register}>Register</button>
+        </div>
+        </div>
+        <div className='items '>
+       
+              <h5 style={{color:"white"}}>Already have an Account?</h5>
               </div>
-        <div className='buttons '>
-        <button onClick={handleClicking}>Login</button>
+              <div className='items '>
+        <div >
+        <button className='buttons ' onClick={handleClicking}>Login</button>
         </div>
+          </div>
     </div>
-    </div>
-    </div>
+
    
  
   

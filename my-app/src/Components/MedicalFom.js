@@ -82,121 +82,163 @@ const MedicalForm = () => {
 
       </ul>
     </nav>
-     <h1  style={{marginTop:"60px",marginBottom:"20px",marginLeft:"650px"}}>Medical Data Form</h1>
-    <div className='medform formmm'>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">First Name:</label>
+     
+      <h1 style={{textAlign:"center",marginTop:"50px"}}>Medical Form</h1>
+    
+   
+
+      {/* <div className="container">
+        <div className="items" id="item1"></div>
+        <div className="items" id="item2"></div>
+        <div className="items" id="item3"></div>
+        <div className="items" id="item4"></div>
+        <div className="items" id="item5"></div>
+        <div className="items" id="item6"></div>
+        <div className="items" id="item7"></div>
+        <div className="items" id="item8"></div>
+      </div> */}
+      <div className="parent">
+
+      <form onSubmit={handleSubmit}>
+      <div className="items" id="item1">
       <input
       className='inputtt'
         type="text"
+        placeholder='First Name'
         id="firstName"
         name="firstName"
         value={formData.firstName}
         onChange={handleChange}
         required
       />
+   </div>
 
-      <label htmlFor="lastName">Last Name:</label>
+   <div className="items" id="item6">
+     
       <input
       className='inputtt'
         type="text"
+        placeholder='Last Name'
         id="lastName"
         name="lastName"
         value={formData.lastName}
         onChange={handleChange}
         required
       />
+</div>
 
-      <label htmlFor="dateOfBirth">Date of Birth:</label>
+<div className="items" id="item7">
+     
       <input
       className='inputtt'
         type="date"
+        placeholder='DOB'
         id="dateOfBirth"
         name="dateOfBirth"
         value={formData.dateOfBirth}
         onChange={handleChange}
         required
       />
-
-      <label htmlFor="gender">Gender:</label>
+</div>
+<div className="items" id="item8">
+     
       <select
       className='inputtt'
+      placeholder='Gender'
         id="gender"
         name="gender"
         value={formData.gender}
         onChange={handleChange}
         required
       >
-        <option value="">--Please select an option--</option>
+        <option value="">Gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="non-binary">Non-binary</option>
       </select>
-
-      <label htmlFor="email">Email:</label>
+</div>
+<div className="items" id="item9">
       <input
       className='inputtt'
         type="email"
+        placeholder='Email'
         id="email"
         name="email"
         value={formData.email}
         onChange={handleChange}
         required
       />
-
-      <label htmlFor="phone">Phone:</label>
+</div>
+<div className="items" id="item10">
       <input
       className='inputtt'
         type="tel"
+        placeholder='Contact Number'
         id="phone"
         name="phone"
         value={formData.phone}
         onChange={handleChange}
         required
       />
-
-      <label htmlFor="address">Address:</label>
-      <textarea
-      className='textt'
+</div>
+<div className="items" id="item11">
+      
+      <input
+      className='inputtt'
+      placeholder='Address'
         id="address"
         name="address"
         value={formData.address}
         onChange={handleChange}
         required
-      ></textarea>
+      ></input>
+</div>
 
-      <label htmlFor="medicalHistory">Medical History:</label>
+
+
+<div className="items" id="item2">
+      
       <textarea
       className='textt'
+      placeholder='Medical History'
         id="medicalHistory"
         name="medicalHistory"
         value={formData.medicalHistory}
         onChange={handleChange}
         required
       ></textarea>
+</div>
 
-      <label htmlFor="allergies">Allergies:</label>
+<div className="items" id="item3">
+    
       <textarea
       className='textt'
+      placeholder='Allergies'
         id="allergies"
         name="allergies"
         value={formData.allergies}
         onChange={handleChange}
         required
       ></textarea>
+</div>
 
-      <label htmlFor="previousTreatments">Previous Treatments:</label>
+<div className="items" id="item4">
+      
       <textarea
       className='textt'
+      placeholder='Previous Treatments'
         id="previousTreatments"
         name="previousTreatments"
         value={formData.previousTreatments}
         onChange={handleChange}
         required
         ></textarea>
-<label htmlFor="medications">Medications:</label>
+      </div>  
+      <div className="items" id="item5">
+
 <textarea
 className='textt'
+placeholder='Medications'
         id="medications"
         name="medications"
         value={formData.medications}
@@ -204,10 +246,32 @@ className='textt'
         required
         ></textarea>
 
-       <button style={{marginLeft:"150px"}}onClick={handleSubmit}>Submit</button>
-</form>
 
 </div>
+{/* <label htmlFor="report">Upload Medical Report</label> */}
+<div  className="items" id="item12">
+      
+      <input
+      className='inputtt'
+      placeholder='Report'
+      type='file'
+        id="report"
+        name="report"
+        value={formData.report}
+        onChange={handleChange}
+        required
+      ></input>
+</div>
+
+<div className="items" id="item13">
+  <button className="btnn" style={{color:"black"}} type="submit">Submit</button>
+</div>
+</form>
+</div>
+       {/* <button style={{marginLeft:"150px"}}onClick={handleSubmit}>Submit</button> */}
+
+
+
 </>
   );};
         export default MedicalForm;
