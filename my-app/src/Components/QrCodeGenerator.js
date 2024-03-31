@@ -1,66 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import QRCode from 'qrcode.react';
 import {Link} from 'react-router-dom';
 import './QRCode.css';
 const QrCodeGenerator = () => {
   const [email, setEmail] = useState('');
+  const [data, setData] = useState([]);
+    const [userIdentifier,setUserIdentifier]=useState('');
+    useEffect(() => {
+        fetch("https://healthvaultfinal2.onrender.com/getAllUser", {
+          method: 'GET',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data, "userData");
+            setData(data.data);
+          });
+      }, []);
+
+
 
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
 
   const generateQRCode = () => {
-    const url = `https://healthvault.netlify.app/?email=${email}`; // Modify the URL as per your requirements
+    const url = `https://healthvault.netlify.app/?email=${email}/?id=${data[0]._id}/`; // Modify the URL as per your requirements
     return <QRCode value={url} />;
   };
 
   return (
     <>
-
-<nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">Health Vault</Link>
-      </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/medform">Update Record</Link>
-        </li>
-        <li>
-          <Link to="/patientdata">Medical Record</Link>
-        </li>
-        <li>
-          <Link to="/qr">QR Code</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Sign Up</Link>
-        </li>
-
-      </ul>
-    </nav>
   <div className='cont'>
- 
       <div className='row'>
-        <div className='col-md-6 '>
-           <img style={{height:'300px',width:'500px',marginLeft:"-300px"}} src='https://createqrcode.com/assets/img/features-2b.png' alt='img'></img>
+        <div className='col-md-6 qrimage '>
+           <img src='https://createqrcode.com/assets/img/features-2b.png' alt='img'></img>
         </div>
-        <div className='col-md-6 cont2' >
-        <h1 style={{marginBottom:"50px",fontSize:"30px"}}>QR Code Generator</h1>
-      <label>
-        Enter your email ID:
+        <div className='col-md-6 qrcontent' >
+        <h1>QR Code Generator</h1>
+      
+        <h4 style={{fontFamily:"georgia",color:"white"}}>Enter your email ID:</h4>
         <input type="text" value={email} onChange={handleChange} />
-      </label>
+      
       <br />
       {email && generateQRCode()}
         </div>
       </div>
       </div>
-    
+
     </>
   );
 };

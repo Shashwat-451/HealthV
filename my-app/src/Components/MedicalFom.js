@@ -55,35 +55,9 @@ const MedicalForm = () => {
   return (
     <>
 
-<nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">Health Vault</Link>
-      </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/medform">Update Record</Link>
-        </li>
-        <li>
-          <Link to="/patientdata">Medical Record</Link>
-        </li>
-        <li>
-          <Link to="/qr">QR Code</Link>
-        </li>
-        <li>
-          
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Sign Up</Link>
-        </li>
 
-      </ul>
-    </nav>
      
-      <h1 style={{textAlign:"center",marginTop:"50px"}}>Medical Form</h1>
+      
     
    
 
@@ -98,11 +72,15 @@ const MedicalForm = () => {
         <div className="items" id="item8"></div>
       </div> */}
       <div className="parent">
+      
 
       <form onSubmit={handleSubmit}>
-      <div className="items" id="item1">
+    
+    <div className='wrapper'>
+
+    <h1 style={{textAlign:"center",color:"white",fontFamily:"georgia",fontWeight:"bold",paddingTop:"5%"}}>Medical Form</h1>
       <input
-      className='inputtt'
+     
         type="text"
         placeholder='First Name'
         id="firstName"
@@ -111,12 +89,12 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       />
-   </div>
+  
 
-   <div className="items" id="item6">
+
      
       <input
-      className='inputtt'
+     
         type="text"
         placeholder='Last Name'
         id="lastName"
@@ -125,12 +103,10 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       />
-</div>
 
-<div className="items" id="item7">
      
       <input
-      className='inputtt'
+     
         type="date"
         placeholder='DOB'
         id="dateOfBirth"
@@ -139,11 +115,10 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       />
-</div>
-<div className="items" id="item8">
-     
+
+
       <select
-      className='inputtt'
+     
       placeholder='Gender'
         id="gender"
         name="gender"
@@ -156,10 +131,10 @@ const MedicalForm = () => {
         <option value="female">Female</option>
         <option value="non-binary">Non-binary</option>
       </select>
-</div>
-<div className="items" id="item9">
+
+
       <input
-      className='inputtt'
+     
         type="email"
         placeholder='Email'
         id="email"
@@ -168,10 +143,10 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       />
-</div>
-<div className="items" id="item10">
+
+
       <input
-      className='inputtt'
+     
         type="tel"
         placeholder='Contact Number'
         id="phone"
@@ -180,11 +155,10 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       />
-</div>
-<div className="items" id="item11">
+
       
       <input
-      className='inputtt'
+     
       placeholder='Address'
         id="address"
         name="address"
@@ -192,12 +166,7 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       ></input>
-</div>
 
-
-
-<div className="items" id="item2">
-      
       <textarea
       className='textt'
       placeholder='Medical History'
@@ -207,10 +176,7 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       ></textarea>
-</div>
 
-<div className="items" id="item3">
-    
       <textarea
       className='textt'
       placeholder='Allergies'
@@ -220,10 +186,7 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
       ></textarea>
-</div>
-
-<div className="items" id="item4">
-      
+  
       <textarea
       className='textt'
       placeholder='Previous Treatments'
@@ -233,8 +196,6 @@ const MedicalForm = () => {
         onChange={handleChange}
         required
         ></textarea>
-      </div>  
-      <div className="items" id="item5">
 
 <textarea
 className='textt'
@@ -247,12 +208,9 @@ placeholder='Medications'
         ></textarea>
 
 
-</div>
-{/* <label htmlFor="report">Upload Medical Report</label> */}
-<div  className="items" id="item12">
-      
+
       <input
-      className='inputtt'
+      style={{backgroundColor:"white"}}
       placeholder='Report'
       type='file'
         id="report"
@@ -261,12 +219,11 @@ placeholder='Medications'
         onChange={handleChange}
         required
       ></input>
-</div>
 
-<div className="items" id="item13">
-  <button className="btnn" style={{color:"black"}} type="submit">Submit</button>
-</div>
+  <button className="btnclass" style={{color:"black",marginBottom:"3%"}} type="submit">Submit</button>
+  </div>
 </form>
+
 </div>
        {/* <button style={{marginLeft:"150px"}}onClick={handleSubmit}>Submit</button> */}
 

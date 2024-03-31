@@ -51,58 +51,33 @@ const LoginPage = ({setLoginUser}) => {
   
     return (
       <>
-       <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">Health Vault</Link>
-      </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/medform">Update Record</Link>
-        </li>
-        <li>
-          <Link to="/patientdata">Medical Record</Link>
-        </li>
-        <li>
-          <Link to="/qr">QR Code</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Sign Up</Link>
-        </li>
 
-      </ul>
-    </nav>
-       <div className='parent bord' style={{marginTop:"120px"}}>
+       <div className='loginformclass'>
         
        
          
-          <div className='login'>
-              {console.log(user)}
-              <h1 style={{marginBottom:"40px",marginTop:"30px",color:"white"}}className='text-center'>LOGIN</h1>
-              <div className='items'> 
-              <input className='inputt' type="text" name="email" value={user.email} placeholder="Enter your Email" onChange={handleChange}></input>
-              </div>
-              <div className='items'> 
-              <input className='inputt' type="password" name="password" value={user.password} placeholder="Enter your password" onChange={handleChange}></input>
-              </div>
-              <div className='items'>
+          <div className='itemsloginform'>
+           
+              <h1 style={{marginBottom:"40px",marginTop:"30px",color:"white",fontFamily:"Georgia"}}className='text-center'>LOGIN</h1>
+              
+              <input type="text" name="email" value={user.email} placeholder="Enter your Email" onChange={handleChange}></input>
+          
+              
+              <input type="password" name="password" value={user.password} placeholder="Enter your password" onChange={handleChange}></input>
+      
+           
               <div >
-              <button  className='buttons 'onClick={login}>Login</button>
+              <button  className='btnclass' onClick={login}>Login</button>
               </div>
-              </div>
-              <div className='items'>
+            
+              
               <div style={{color:'white'}}>
-              <h5>Don't have an Account?</h5>
+              <h5 style={{fontFamily:"Georgia",fontSize:"14px"}}>Don't have an Account?</h5>
               </div>
-              </div>
+              
               <div className='items'>
-              <div   style={{marginBottom:"10px"}} >
-              <button className='buttons ' onClick={handleClicking}>Sign Up</button>
+              <div   style={{marginBottom:"10px",marginTop:"-6px"}} >
+              <button className='btnclass' onClick={handleClicking}>Sign Up</button>
               </div>
               </div>
             </div>

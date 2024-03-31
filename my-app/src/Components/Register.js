@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import "./Register.css"
 import axios from "axios"
 
@@ -21,47 +21,46 @@ const Register = () => {
   }
 
 
- 
-    const [user,setUser]=useState({
-        name:"",
-        email:"",
-        password:"",
-        reEnterPassword:""
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    reEnterPassword: ""
+
+  })
+
+  const handleChange = e => {
+    const { name, value } = e.target // whatever change takes place after writing in form gets stored in event continuously and then we extract name and value from there in next line.
+    // console.log(name,value);
+    setUser({
+      ...user, //all else value same
+      [name]: value  //change the name attribute to value
 
     })
+  }
 
-    const handleChange=e=>{
-        const {name,value}=e.target // whatever change takes place after writing in form gets stored in event continuously and then we extract name and value from there in next line.
-        // console.log(name,value);
-        setUser({
-            ...user, //all else value same
-            [name]:value  //change the name attribute to value
+  const register = () => {
+    const { name, email, password, reEnterPassword } = user
+    if (name && email && password && (password === reEnterPassword)) {
+      // alert("posted")
+      axios.post("https://healthvaultfinal2.onrender.com/register", user)
+        .then(res => {
+          alert(res.data.message)
 
+          navigate("/login")
         })
     }
-
-    const register= () => {
-        const {name,email,password,reEnterPassword}=user
-        if(name && email && password && (password===reEnterPassword))
-        {
-          // alert("posted")
-          axios.post("https://healthvaultfinal2.onrender.com/register",user)
-          .then(res =>{
-            alert(res.data.message)
-         
-            navigate("/login")
-          })
-        }
-        else{
-            alert("Invalid Input")
-        }
-        
+    else {
+      alert("Invalid Input")
     }
+
+  }
 
   return (
     <>
 
-<nav className="navbar">
+      {/* <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/">Health Vault</Link>
       </div>
@@ -86,48 +85,47 @@ const Register = () => {
         </li>
 
       </ul>
-    </nav>
+    </nav> */}
 
 
 
-    <div className='parent bord' style={{marginTop:"90px"}}>
+      <div className='regformclass'>
 
-        
-          <div className='register '></div>
-          <div className='items '>
-        <h1 className='text-center' style={{color:"white"}}>REGISTER</h1>
-        </div>
-        <div className='items '>
-        <input className="inputt"type="text" name="name" value={user.name} placeholder="Your Name" onChange={handleChange}></input>
-       </div>
-        <div className='items '>
-        <input className="inputt"type="text" name="email" value={user.email} placeholder="Your Email" onChange={handleChange}></input>
-        </div>
-        <div className='items '>
-        <input className="inputt"type="password" name="password" value={user.password} placeholder="Your Password" onChange={handleChange}></input>
-        </div>
-        <div className='items '>
-        <input className="inputt" type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
-        </div>
-        <div className='items '>
-        <div >
-        <button className='buttons ' onClick={register}>Register</button>
-        </div>
-        </div>
-        <div className='items '>
-       
-              <h5 style={{color:"white"}}>Already have an Account?</h5>
-              </div>
-              <div className='items '>
-        <div >
-        <button className='buttons ' onClick={handleClicking}>Login</button>
-        </div>
+        <div className='itemsregform '>
+          <h1 className='text-center' style={{ fontFamily:"Georgia",color:"white" }}>REGISTER</h1>
+
+
+          <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={handleChange}></input>
+
+
+          <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={handleChange}></input>
+
+
+          <input type="password" name="password" value={user.password} placeholder="Your Password" onChange={handleChange}></input>
+
+
+          <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={handleChange}></input>
+
+
+          <div  >
+            <button className='btnclass'  onClick={register}>Register</button>
+
           </div>
-    </div>
 
-   
- 
-  
+
+          <h5 style={{ fontFamily:"georgia" ,color:"white"}}>Already have an Account?</h5>
+
+          <div  >
+            <button  className='btnclass' onClick={handleClicking}>Login</button>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
     </>
   )
 }

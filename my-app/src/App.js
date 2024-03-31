@@ -10,20 +10,25 @@ import LoginPage from './Components/Login';
 import Register from './Components/Register';
 import Articles from './Components/Articles';
 import Appointments from './Appointments';
+import Navbar from './Components/Navbar';
+import QRCodeGen2 from './Components/QRCodeGen2';
 function App() {
 
   return (
   <BrowserRouter>
     <>
+    <Navbar/>
     <Routes>
 
         {/* */}
+       
         <Route path="/" element={<Home/>}/>
         <Route path="/appointment" element={<Appointments/>}/>
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/medform" element={<MedicalForm/>}/> 
         <Route path="/patientdata" element={<PatientData/>}/>
         <Route path="/qr" element={<QrCodeGenerator/>}/>
+        <Route path="/qr2" element={<QRCodeGen2/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<Register/>}/>
         {/* <Route path="/mumbai" element={<Home2Upper/>}/>
