@@ -13,8 +13,7 @@ const authSlice= createSlice({
     name:"auth",
     initialState:initialState,
     reducers:{
-        //state is what is defined here, action/value is that which will pe
-        //passed while dispatching setSignupData
+        
         setSignupData(state,action){
             state.signupData=action.payload;
         },
