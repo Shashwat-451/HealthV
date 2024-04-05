@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import {setLoginUser} from '../Redux/Slices/AuthSlice'
+import {setLoggedIn} from '../Redux/Slices/AuthSlice'
+import {setToken} from '../Redux/Slices/AuthSlice'
 import './Login.css';
-const LoginPage = ({setLoginUser}) => {
+const LoginPage = () => {
     let navigate = useNavigate();
-  
+    const dispatch=useDispatch();
+     
     function handleClicking() {
       navigate('/register');
   
     }
+
+    
     const [user, setUser] = useState({
   
       email: "",
       password: ""
-  
-  
     })
   
     const handleChange = e => {
@@ -31,11 +36,21 @@ const LoginPage = ({setLoginUser}) => {
   
   
     const login = () => {
-      axios.post("https://healthvaultfinal2.onrender.com/login", user)
+      // axios.post("https://healthvaultfinal2.onrender.com/login", user)
+      axios.post("http://localhost:9000/login", user)
         .then(res => {
           if (res.status >= 200 && res.status < 300) {
             alert(res.data.message);
-            // setLoginUser(res.data.user);
+            console.log("toke",res.data.token)
+            console.log("response is",res);
+            dispatch(setLoginUser(res.data.existinguser[0]));
+            dispatch(setToken(res.data.token));
+            dispatch(setLoggedIn(true));
+            localStorage.setItem("token", JSON.stringify(res.data.token))
+            localStorage.setItem("user", JSON.stringify(res.data.existinguser))
+            
+            const tokenu=localStorage.getItem("token")
+            console.log("ttt",tokenu)
             navigate("/patientData");
           } else {
             alert("Login failed. Please check your credentials and try again.");

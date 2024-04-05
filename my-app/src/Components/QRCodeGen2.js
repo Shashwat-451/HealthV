@@ -17,6 +17,10 @@ function QRCodeGen2() {
           });
       }, []);
 
+      // const qrredirect=()=>{
+      //   axios.post("/qrcoderediredt",{email})
+      // }
+
       const generateQRCode = () => {
         // const url = `https://healthvault.netlify.app/?email=${email}`; // Modify the URL as per your requirements
         return <QRCode value={data[0]._id} />;

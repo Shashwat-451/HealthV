@@ -1,5 +1,6 @@
 import express from "express"
 import cors from "cors"
+import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 // import cookieParser from 'cookie-parser';
 
@@ -11,7 +12,7 @@ app.use(cors())
 // app.use(cookieParser());
 
 
-mongoose.connect("mongodb+srv://healthvault-shashwat:kbFaNLLAS7ExuCAR@cluster0.5ffu791.mongodb.net/healthvaultdatabase?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://healthvault-shashwat:kbFaNLLAS7ExuCAR@cluster0.5ffu791.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -22,17 +23,7 @@ mongoose.connect("mongodb+srv://healthvault-shashwat:kbFaNLLAS7ExuCAR@cluster0.5
     console.error("Error connecting to database", error);
   });
 
-// mongoose
-//   .connect('mongodb+srv://ShamDatabase:y!kHDKSRHeg69Bc@cluster0.5ffu791.mongodb.net/?retryWrites=true&w=majority', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log('DB connected');
-//   })
-//   .catch((error) => {
-//     console.error('Error connecting to database', error);
-//   });
+
 
 const userSchema = new mongoose.Schema({
     name: String,
@@ -58,37 +49,73 @@ const patientSchema = new mongoose.Schema({
   
   const Patient = new mongoose.model('Patient', patientSchema);
 
-
-//Routes
 let sharedVariable;
 function setSharedVariable(req, res, next) {
   sharedVariable = req.body.email;
   next();
 }
-app.post("/login", setSharedVariable,(req, res) => {
+app.post("/login", setSharedVariable,async(req, res) => {
    
+ 
   const { email, password } = req.body;
-    User.findOne({ email: email })
-      .then((user) => {
-        if (user) {
-          if (password === user.password) {
-            // res.cookie('email', user.email);
-            res.send({ message: "Login successful", user: user });
-            sharedVariable = req.body.email;
-                  
+  console.log(email)
+  console.log(password)
+  if(!email||!password)
+  {
+      return res.json({
+          success:false,
+          message:"All fields are required"
+      })
+  }
+  const existinguser=await User.find({email});
 
-          } else {
+console.log(existinguser)
+  if(!existinguser || existinguser.length===0)
+  {
+      return res.json({
+          success:false,
+          message:"User is not registered"
+      })
+  }
+ 
+  const payload={
+    email:existinguser[0].email,
+    id:existinguser[0]._id,
+}
+      if (existinguser) {
+          if (password === existinguser[0].password) {
+            // res.cookie('email', user.email);
+            // res.send({ message: "Login successful", user: existinguser });
+            // sharedVariable = req.body.email;
+             
+            let token=jwt.sign(payload,
+              "shashwat",
+              {
+                  expiresIn:"2h",
+              })
+          existinguser[0].token=token;
+          existinguser[0].password=undefined;
+
+          const options={
+            expires:new Date(Date.now()+3*24*60*60*1000),
+            httpOnly:true,
+        }
+
+        res.cookie("token",token,options).status(200).json({
+          success:true,
+          token,
+          existinguser,
+          message:"User Logged In successsfully"
+      })
+       } else {
             res.send({ message: "Password did not match" });
              
           }
         } else {
           res.send({ message: "User not registered" });
         }
-      })
-      .catch((error) => {
-        console.error("Error querying user", error);
-      });
-  });
+}
+);
   
   app.post("/patientData", (req, res)=> {
     const { firstName,lastName,dateOfBirth,gender, email,phone,address,medicalHistory,allergies,previousTreatments,medications } = req.body;
@@ -158,13 +185,14 @@ app.post("/register", (req, res)=> {
 app.get("/getAllUser",async (req, res) => {
   // const email = req.params.email;
     try {
-      const  allUser=await Patient.find({email:sharedVariable});
+      const  allUser=await Patient.find();
       // const allUser = await Patient.findOne({ email: email });
       res.send({status:"ok",data:allUser});
     } catch (error) {
       console.log(error);
     }
 })
+
 
 app.get('/health-tips', async (req, res) => {
   try {

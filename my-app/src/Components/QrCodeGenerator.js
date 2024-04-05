@@ -1,30 +1,32 @@
 import React, { useState,useEffect } from 'react';
 import QRCode from 'qrcode.react';
 import {Link} from 'react-router-dom';
+import { useDispatch,useSelector } from 'react-redux';
 import './QRCode.css';
+import { setLoggedIn } from '../Redux/Slices/AuthSlice';
 const QrCodeGenerator = () => {
   const [email, setEmail] = useState('');
-  const [data, setData] = useState([]);
-    const [userIdentifier,setUserIdentifier]=useState('');
-    useEffect(() => {
-        fetch("https://healthvaultfinal2.onrender.com/getAllUser", {
-          method: 'GET',
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data, "userData");
-            setData(data.data);
-          });
-      }, []);
+  const [data, setData] = useState('');
+ 
+    
+  const user=useSelector(state=>state.user);
+  console.log("ewoiho",user);
+  // useEffect hook to update data when user changes
+  useEffect(() => {
+    // Update data when user changes
+    setData(user);
+  }, [user]); // Only run this effect when user changes
 
-
+  // console.log("popvsm",data._id)
+  
+  // console.log("kvknr",data);
 
   const handleChange = (e) => {
     setEmail(e.target.value);
   };
-
+  console.log(data);
   const generateQRCode = () => {
-    const url = `https://healthvault.netlify.app/?email=${email}/?id=${data[0]._id}/`; // Modify the URL as per your requirements
+    const url = `https://healthvault.netlify.app/${data.email}/${data._id}`;
     return <QRCode value={url} />;
   };
 
@@ -36,13 +38,9 @@ const QrCodeGenerator = () => {
            <img src='https://createqrcode.com/assets/img/features-2b.png' alt='img'></img>
         </div>
         <div className='col-md-6 qrcontent' >
-        <h1>QR Code Generator</h1>
+        <h1>QR Code</h1>
       
-        <h4 style={{fontFamily:"georgia",color:"white"}}>Enter your email ID:</h4>
-        <input type="text" value={email} onChange={handleChange} />
-      
-      <br />
-      {email && generateQRCode()}
+      {generateQRCode()}
         </div>
       </div>
       </div>

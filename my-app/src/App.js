@@ -1,6 +1,6 @@
 import './App.css';
 
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import MedicalForm from './Components/MedicalFom';
 import PatientData from './Components/PatientData';
 import Home from './Components/Home';
@@ -12,6 +12,7 @@ import Articles from './Components/Articles';
 import Appointments from './Appointments';
 import Navbar from './Components/Navbar';
 import QRCodeGen2 from './Components/QRCodeGen2';
+import QRLanding from './Components/QRLanding';
 function App() {
 
   return (
@@ -28,7 +29,7 @@ function App() {
         <Route path="/medform" element={<MedicalForm/>}/> 
         <Route path="/patientdata" element={<PatientData/>}/>
         <Route path="/qr" element={<QrCodeGenerator/>}/>
-        <Route path="/qr2" element={<QRCodeGen2/>}/>
+        <Route path="/qrlanding/:param1/:param2" element={<QRLanding/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<Register/>}/>
         {/* <Route path="/mumbai" element={<Home2Upper/>}/>
